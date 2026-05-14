@@ -10,8 +10,8 @@
 
 {% block main %}
 <form id="form">
-    <input type="hidden" id="action" name="action" value="{{action}}">
-    <input type="hidden" id="id" name="id" value="{{id}}">
+    <input type="hidden" id="action" name="action" value="{{ action }}">
+    <input type="hidden" id="id" name="id" value="{{ id }}">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -25,43 +25,40 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input autofocus type="text" class="form-control" id="numeroDocumento"
-                                    name="numeroDocumento" placeholder="Digite o CNPJ!" value="{{empresa.cnpj}}"
-                                    required>
-                                <label for="numeroDocumento">Digite o CNPJ!</label>
+                                <input autofocus type="text" class="form-control" id="nomeExibicao" name="nomeExibicao"
+                                    placeholder="Nome fantasia" value="{{ enterprise.fantasia }}" required>
+                                <label for="nomeExibicao">Nome fantasia</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nomeExibicao" name="nomeExibicao"
-                                    placeholder="Digite o nome fantasia!" value="{{empresa.fantasia}}"
-                                    required>
-                                <label for="nomeExibicao">Digite o nome Fantasia!</label>
+                                <input type="text" class="form-control" id="nomeLegal" name="nomeLegal"
+                                    placeholder="Razão social" value="{{ enterprise.razao_social }}">
+                                <label for="nomeLegal">Razão social</label>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nomeLegal" name="nomeLegal"
-                                    placeholder="Digite a razão social!"
-                                    value="{{empresa.razao}}" required>
-                                <label for="nomeLegal">Digite a Razão Social!</label>
+                                <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento"
+                                    placeholder="CNPJ" value="{{ enterprise.cnpj }}">
+                                <label for="numeroDocumento">CNPJ</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="registroSecundario"
-                                    name="registroSecundario" placeholder="Digite a ie!"
-                                    value="{{empresa.inscricao_estadual}}" required>
-                                <label for="registroSecundario">Digite a IE!</label>
+                                    name="registroSecundario" placeholder="Inscrição estadual"
+                                    value="{{ enterprise.ie }}">
+                                <label for="registroSecundario">Inscrição estadual</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="icheck-primary d-inline">
-                                <input class="form-check-label" type="checkbox" id="ativo" name="ativo" value="true" {%
-                                    if empresa.ativo==1 %} checked {% endif %}>
-                                <label for="ativo">
-                                    Ativo?
-                                </label>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="icheck-primary d-inline">
+                                    <input class="form-check-label" type="checkbox" id="ativo" name="ativo" value="true"
+                                        {% if enterprise.ativo==1 %} checked {% endif %}>
+                                    <label for="ativo">Ativo?</label>
+                                </div>
                             </div>
                         </div>
                     </div>

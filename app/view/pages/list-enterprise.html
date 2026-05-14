@@ -3,79 +3,46 @@
 {% block breadcrumbs %}
 <ol class="breadcrumb float-sm-end">
     <li class="breadcrumb-item"><a href="/">Início</a></li>
-    <li class="breadcrumb-item"><a href="/empresa/lista">Lista de empresas</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Detalhes da empresa</li>
+    <li class="breadcrumb-item active" aria-current="page">Lista de empresas</li>
 </ol>
 {% endblock %}
 
 {% block main %}
-<form id="form">
-    <input type="hidden" id="action" name="action" value="{{action}}">
-    <input type="hidden" id="id" name="id" value="{{id}}">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/empresa/lista" class="btn btn-warning">
-                        <i class="fa-solid fa-chevron-left"></i>
-                        Voltar
-                    </a>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input autofocus type="text" class="form-control" id="numeroDocumento"
-                                    name="numeroDocumento" placeholder="Digite o CNPJ!" value="{{empresa.cnpj}}"
-                                    required>
-                                <label for="numeroDocumento">Digite o CNPJ!</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nomeExibicao" name="nomeExibicao"
-                                    placeholder="Digite o nome fantasia!" value="{{empresa.fantasia}}" required>
-                                <label for="nomeExibicao">Digite o nome Fantasia!</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nomeLegal" name="nomeLegal"
-                                    placeholder="Digite a razão social!" value="{{empresa.razao}}" required>
-                                <label for="nomeLegal">Digite a Razão Social!</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="registroSecundario"
-                                    name="registroSecundario" placeholder="Digite a IE!"
-                                    value="{{empresa.inscricao_estadual}}" required>
-                                <label for="registroSecundario">Digite a IE!</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="icheck-primary d-inline">
-                                <input class="form-check-label" type="checkbox" id="ativo" name="ativo" value="true" {%
-                                    if empresa.ativo==1 %} checked {% endif %}>
-                                <label for="ativo">
-                                    Ativo?
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button id="insert" type="button" class="btn btn-success">
-                        <i class="fa-solid fa-floppy-disk"></i>
-                        Salvar
-                    </button>
-                </div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <a href="/empresa/detalhes" class="btn btn-outline-success">
+                    <i class="fa-solid fa-plus"></i>
+                    Cadastro
+                </a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-hover" id="table-enterprise">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome fantasia</th>
+                            <th>Razão social</th>
+                            <th>CNPJ</th>
+                            <th>IE</th>
+                            <th>Ativo?</th>
+                            <th>Criado em</th>
+                            <th>Atualizado em</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
+<form id="form">
+    <input type="hidden" name="id" id="id">
 </form>
 {% endblock %}
 
 {% block script %}
-{{ vite('resources/js/pages/enterprise.js') }}
+{{ vite('resources/js/pages/list-enterprise.js') }}
 {% endblock %}

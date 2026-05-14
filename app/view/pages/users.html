@@ -3,15 +3,15 @@
 {% block breadcrumbs %}
 <ol class="breadcrumb float-sm-end">
     <li class="breadcrumb-item"><a href="/">Início</a></li>
-    <li class="breadcrumb-item"><a href="/usuario/lista">Lista de clientes</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Detalhes do cliente</li>
+    <li class="breadcrumb-item"><a href="/usuario/lista">Lista de usuários</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Detalhes do usuário</li>
 </ol>
 {% endblock %}
 
 {% block main %}
 <form id="form">
-    <input type="hidden" id="action" name="action" value="{{action}}">
-    <input type="hidden" id="id" name="id" value="{{id}}">
+    <input type="hidden" id="action" name="action" value="{{ action }}">
+    <input type="hidden" id="id"     name="id"     value="{{ id }}">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -25,58 +25,60 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input autofocus type="text" class="form-control" id="numeroDocumento"
-                                    name="numeroDocumento" placeholder="Digite o CPF!" value="{{user.cpf}}" required>
-                                <label for="numeroDocumento">Digite o CPF!</label>
+                                <input autofocus type="text" class="form-control"
+                                    id="nome" name="nome"
+                                    placeholder="Nome"
+                                    value="{{ user.nome }}" required>
+                                <label for="nome">Nome</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nome" name="nome"
-                                    placeholder="Digite o nome!" value="{{user.nome}}" required>
-                                <label for="nome">Digite o nome!</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="sobrenome" name="sobrenome"
-                                    placeholder="Digite o sobre nome!" value="{{user.sobrenome}}" required>
-                                <label for="sobrenome">Digite o sobre nome!</label>
+                                <input type="text" class="form-control"
+                                    id="sobrenome" name="sobrenome"
+                                    placeholder="Sobrenome"
+                                    value="{{ user.sobrenome }}">
+                                <label for="sobrenome">Sobrenome</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="rg" name="rg" placeholder="Digite o rg!"
-                                    value="{{user.rg}}" required>
-                                <label for="rg">Digite o RG!</label>
+                                <input type="text" class="form-control"
+                                    id="cpf" name="cpf"
+                                    placeholder="CPF"
+                                    value="{{ user.cpf }}">
+                                <label for="cpf">CPF</label>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="dataRegistro" name="dataRegistro"
-                                    placeholder="Informe o nascimento ou fundação!"
-                                    value="{{user.nascimento_fundacao | slice(0,2) }}/{{ user.nascimento_fundacao | slice(2,2) }}/{{ user.nascimento_fundacao | slice(4,4) }}"
-                                    required>
-                                <label for="dataRegistro">Informe o nascimento ou
-                                    fundação!</label>
+                                <input type="text" class="form-control"
+                                    id="rg" name="rg"
+                                    placeholder="RG"
+                                    value="{{ user.rg }}">
+                                <label for="rg">RG</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="icheck-primary d-inline">
-                                <input class="form-check-label" type="checkbox" id="ativo" name="ativo" value="true" {%
-                                    if user.ativo==1 %} checked {% endif %}>
-                                <label for="ativo">
-                                    Ativo?
-                                </label>
+                        <div class="col-12 mb-2">
+                            <div class="form-group">
+                                <div class="icheck-primary d-inline">
+                                    <input type="hidden" name="ativo" value="false">
+                                    <input class="form-check-label" type="checkbox"
+                                        id="ativo" name="ativo" value="true"
+                                        {% if user.ativo == 1 %} checked {% endif %}>
+                                    <label for="ativo">Ativo?</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="icheck-primary d-inline">
-                                <input class="form-check-label" type="checkbox" id="administrador" name="administrador"
-                                    value="true" {% if user.administrador==1 %} checked {% endif %}>
-                                <label for="administrador">
-                                    Administrador?
-                                </label>
+                        <div class="col-12 mb-2">
+                            <div class="form-group">
+                                <div class="icheck-primary d-inline">
+                                    <input type="hidden" name="administrador" value="false">
+                                    <input class="form-check-label" type="checkbox"
+                                        id="administrador" name="administrador" value="true"
+                                        {% if user.administrador == 1 %} checked {% endif %}>
+                                    <label for="administrador">Administrador?</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,5 +96,5 @@
 {% endblock %}
 
 {% block script %}
-{{ vite('resources/js/pages/usuario.js') }}
+{{ vite('resources/js/pages/users.js') }}
 {% endblock %}
